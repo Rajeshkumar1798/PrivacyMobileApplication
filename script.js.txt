@@ -1,0 +1,28 @@
+// script.js
+function processData() {
+    const apiUrl = 'https://488au2rbn7.execute-api.eu-north-1.amazonaws.com';
+
+    // Get input data from the form
+    const inputData = {
+        user_id: document.getElementById('user_id').value,
+        // Get other input data as needed
+    };
+
+    // Make a POST request to your API Gateway endpoint
+    fetch(apiUrl + '/process-data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response from the Lambda function
+        console.log(data);
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+    });
+}
