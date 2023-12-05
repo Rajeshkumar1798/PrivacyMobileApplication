@@ -62,7 +62,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('response').innerText = data.message;
+                document.getElementById('response').innerText = `Message: ${data.message}\nData Token: ${data.data_token}`;
             })
             .catch((error) => {
                 console.error('Error:', error);
