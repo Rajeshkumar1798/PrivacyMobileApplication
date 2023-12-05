@@ -60,7 +60,12 @@
                     data: data,
                 }),
             })
-            .then(response => response.json())
+            .then(response => {
+            	if (!response.ok) {
+                	throw new Error('Network response was not ok');
+            	}
+            	return response.json();
+            })
             .then(data => {
                 document.getElementById('response').innerText = `Message: ${data.message}\nData Token: ${data.data_token}`;
             })
