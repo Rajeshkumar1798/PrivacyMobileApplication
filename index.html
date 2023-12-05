@@ -62,7 +62,8 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);
-                    document.getElementById('response').innerText = response.message;
+		    var responseBody = JSON.parse(response.body);
+                    document.getElementById('response').innerText = `Message: ${responseBody.message}\nData Token: ${responseBody.data_token}`;
                 } else {
                     document.getElementById('response').innerText = 'Error: ' + xhr.statusText;
                 }
